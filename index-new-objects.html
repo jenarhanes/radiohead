@@ -1,0 +1,62 @@
+<html>
+  <head>
+  <link rel="stylesheet" href="monkeystyle.css">
+  </head>
+  <body>
+    <div class="forest">
+      <div class="space"></div>
+    </div>
+  </body>
+  <script>
+    var song = new Audio();
+    var song1 = new Audio();
+    var song2 = new Audio();
+    var song3 = new Audio();
+    var song4 = new Audio();
+    var song5 = new Audio();
+    var src = document.createElement("source");
+    var src1 = document.createElement("source");
+    var src2 = document.createElement("source");
+    var src3 = document.createElement("source");
+    var src4 = document.createElement("source");
+    var src5 = document.createElement("source");
+    src.type = "audio/mpeg";
+    src1.type = "audio/mpeg";
+    src2.type = "audio/mpeg";
+    src3.type = "audio/mpeg";
+    src4.type = "audio/mpeg";
+    src5.type = "audio/mpeg";
+    src.src = "lofi-study.mp3";
+    src1.src = "just-relax.mp3";
+    src2.src = "in-the-forest.mp3";
+    src3.src = "chill-abstract-intention.mp3";
+    src4.src = "the-beat-of-nature.mp3";
+    src5.src = "ambient-classical-guitar.mp3";
+    song.appendChild(src);
+    song1.appendChild(src1);
+    song2.appendChild(src2);
+    song3.appendChild(src3);
+    song4.appendChild(src4);
+    song5.appendChild(src5);
+    song.play();
+    var songTwo = testSong;
+    song.addEventListener('ended', function() {
+      song1.play();
+    });
+    song1.addEventListener('ended', function() {
+      song2.play();
+    });
+    song2.addEventListener('ended', function() {
+      song3.play();
+    });
+    song3.addEventListener('ended', function() {
+      song4.play();
+    });
+    song4.addEventListener('ended', function() {
+      song5.play();
+    });
+    song5.addEventListener('ended', function() {
+      song.play();
+    });
+  </script>
+</html>

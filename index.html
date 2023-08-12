@@ -1,0 +1,46 @@
+<html>
+  <body>
+    <div>
+      <audio id="start" controls>
+        <source src="lofi-study.mp3" type= "audio/mpeg" id="play">
+      </audio>
+      <p id="index">What's playing now: lofi-study</p>
+    </div>
+  </body>
+  <script>
+    var song = document.getElementById("start");
+    src = "lofi-study.mp3";
+    src1 = "just-relax.mp3";
+    src2 = "in-the-forest.mp3";
+    src3 = "chill-abstract-intention.mp3";
+    src4 = "the-beat-of-nature.mp3";
+    src5 = "ambient-classical-guitar.mp3";
+    var srcList = [ src, src1, src2, src3, src4, src5 ];
+    song.play();
+    song.addEventListener('ended', function() {
+      var songSource = document.getElementById("play");
+      song.removeChild(songSource);
+      var nextSource = document.createElement("source");
+      nextSource.type = "audio/mpeg";
+      nextSource.id = "play";
+      nextSource.src = srcList[0];
+      for (i = 0; i < srcList.length - 1; i++) {
+        var p1 = document.getElementById("index");
+        if (songSource.src.indexOf(srcList[i]) > 0) {
+          var nextSourceString = srcList[i + 1].substring(0, 43);
+          nextSourceString = nextSourceString.substring(0, nextSourceString.length - 4);
+          nextSource.src = srcList[i + 1];
+          p1.innerHTML = `What's playing now: ${nextSourceString}`;
+        }
+      }
+      if (nextSource.src.indexOf(srcList[0]) > 0) {
+        p1.innerHTML = "What's playing now: lofi-study";
+      }
+      song.appendChild(nextSource);
+      song.pause();
+      song.load();
+      song.play();
+    });
+  </script>
+</html>
+
